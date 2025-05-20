@@ -163,9 +163,6 @@ export default function GirlfriendQuiz() {
 
   const currentQuestion = questions[currentQuestionIndex]
 
-  const lastQuestionId = questions[questions.length - 1].id;
-  const lastAnswered = answers[lastQuestionId as keyof typeof answers] !== "";
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-pink-200 to-pink-100 flex flex-col items-center justify-center p-4 font-vazir relative overflow-hidden">
       {/* Animated background elements */}
@@ -301,9 +298,11 @@ export default function GirlfriendQuiz() {
             <DialogTitle className="text-center text-3xl font-bold text-pink-600">آفرین دختر قشنگم</DialogTitle>
           </DialogHeader>
           <div className="flex justify-center mb-4">
-            <img
+            <Image
               src="/sticker.gif"
               alt="Love GIF"
+              width={128}
+              height={128}
               className="w-32 h-32 object-contain rounded-xl"
             />
           </div>
