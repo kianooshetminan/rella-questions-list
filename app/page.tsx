@@ -13,6 +13,13 @@ export default function GirlfriendQuiz() {
     question1: "",
     question2: "",
     question3: "",
+    question4: "",
+    question5: "",
+    question6: "",
+    question7: "",
+    question8: "",
+    question9: "",
+    question10: "",
   })
 
   const [showSuccess, setShowSuccess] = useState(false)
@@ -156,6 +163,9 @@ export default function GirlfriendQuiz() {
 
   const currentQuestion = questions[currentQuestionIndex]
 
+  const lastQuestionId = questions[questions.length - 1].id;
+  const lastAnswered = answers[lastQuestionId as keyof typeof answers] !== "";
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-pink-200 to-pink-100 flex flex-col items-center justify-center p-4 font-vazir relative overflow-hidden">
       {/* Animated background elements */}
@@ -270,12 +280,11 @@ export default function GirlfriendQuiz() {
           </motion.div>
 
           {/* Submit button - only show on last question */}
-          {currentQuestionIndex === questions.length - 1 && (
+          {currentQuestionIndex === questions.length - 1 && answers[questions[questions.length - 1].id as keyof typeof answers] !== "" && (
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
               <Button
                 type="submit"
-                disabled={!allAnswered}
-                className="w-full bg-gradient-to-r from-pink-400 to-pink-300 hover:from-pink-500 hover:to-pink-400 text-lg py-7 rounded-xl transition-all duration-300 disabled:opacity-50 shadow-md group"
+                className="w-full bg-gradient-to-r from-pink-400 to-pink-300 hover:from-pink-500 hover:to-pink-400 text-lg py-7 rounded-xl transition-all duration-300 shadow-md group"
               >
                 <span className="mr-2 text-white">حالا که جواب دادی بزن رو من</span>
                 <Sparkles className="h-5 w-5 text-white group-hover:animate-pulse" />
@@ -291,6 +300,13 @@ export default function GirlfriendQuiz() {
           <DialogHeader>
             <DialogTitle className="text-center text-3xl font-bold text-pink-600">آفرین دختر قشنگم</DialogTitle>
           </DialogHeader>
+          <div className="flex justify-center mb-4">
+            <img
+              src="/sticker.gif"
+              alt="Love GIF"
+              className="w-32 h-32 object-contain rounded-xl"
+            />
+          </div>
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
